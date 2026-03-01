@@ -1,18 +1,5 @@
 /* --- JS/script.js --- */
-document.addEventListener('DOMContentLoaded', () => {
-
-    // 1. THEME TOGGLE (With LocalStorage memory)
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            themeBtn.textContent = isDark ? '☀️' : '🌙';
-            localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
-        });
-    }
-
-    // Load saved theme preference on page load
+   // Load saved theme preference on page load
     if (localStorage.getItem('portfolio-theme') === 'dark') {
         document.body.classList.add('dark-mode');
         if(themeBtn) themeBtn.textContent = '☀️';
