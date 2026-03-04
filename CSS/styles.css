@@ -1,4 +1,5 @@
-/* --- CSS/styles.css --- */
+/* --- Master CSS for Websites For Hire --- */
+
 :root {
     --primary: #007bff;
     --primary-dark: #0056b3;
@@ -15,8 +16,8 @@
 /* 1. Custom Scrollbar */
 ::-webkit-scrollbar { width: 12px; }
 ::-webkit-scrollbar-track { background: #e9ecef; }
-::-webkit-scrollbar-thumb { 
-    background: var(--primary); 
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
     border-radius: 10px;
     border: 3px solid #e9ecef;
 }
@@ -32,7 +33,7 @@ body {
     overflow-x: hidden;
 }
 
-/* 3. Header & Navigation (Div contains Nav) */
+/* 3. Header & Navigation (Note: This section contains the Nav) */
 .header-main-container {
     background: #ffffff;
     padding: 1rem 5%;
@@ -128,7 +129,7 @@ input, textarea {
     font-weight: bold;
 }
 
-/* 6. Professional Footer */
+/* 6. Professional Footer (Updated to Seattle) */
 footer {
     background-color: #222;
     color: #fff;
@@ -158,32 +159,51 @@ footer {
     overflow: hidden;
     display: inline-block;
     letter-spacing: 2px;
-    /* This connects the logic to the keyframes below */
+    /* Ensure width starts at 0 for the typing effect */
+    width: 0;
     animation: 
         blink 0.7s infinite, 
-        typing 3.5s steps(30, end);
+        typing 3.5s steps(30, end) forwards;
 }
 
-@keyframes blink { 
-    50% { border-color: transparent; } 
-}
+@keyframes blink { 50% { border-color: transparent; } }
 
 @keyframes typing {
     from { width: 0; }
     to { width: 100%; }
 }
-/* ==========================================
-   8. DARK MODE OVERRIDES (The "Winner")
-   ========================================== */
 
-/* Desktop View Adjustment */
-/* --- Websites For Hire: Automatic Night Mode --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-/* Daytime / Light Mode is your default CSS */
-
-/* Nighttime / Dark Mode - Automatically triggers at sunset */
+/* 8. AUTOMATIC NIGHT MODE OVERRIDES */
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #121212; /* Deep dark background */
-        color: #e0e0e0;            /* Soft white text */
+        background-color: var(--bg-dark);
+        color: var(--text-light);
     }
+    
+    .header-main-container {
+        background: #000;
+        border-bottom: 1px solid #333;
+    }
+
+    .hero-card {
+        background: var(--card-bg-dark);
+        color: white;
+    }
+
+    .brand-name { color: white; }
+    
+    input, textarea {
+        background: #444;
+        color: #fff;
+        border-color: #555;
+    }
+}
+
+/* 9. Desktop View Adjustments */
+@media (min-width: 992px) {
+    .nav-container { flex-direction: row; justify-content: space-between; }
+    .nav-links { gap: 20px; }
+}
