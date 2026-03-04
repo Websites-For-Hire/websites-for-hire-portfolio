@@ -151,12 +151,27 @@ footer {
 .footer-bottom { text-align: center; margin-top: 30px; border-top: 1px solid #444; padding-top: 15px; color: #888; }
 
 /* 7. Animations */
-.typing-text { color: var(--primary); border-right: 3px solid var(--primary); animation: blink 0.7s infinite; }
-@keyframes blink { 50% { border-color: transparent; } }
+.typing-text {
+    color: var(--primary);
+    border-right: 3px solid var(--primary);
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    letter-spacing: 2px;
+    /* This connects the logic to the keyframes below */
+    animation: 
+        blink 0.7s infinite, 
+        typing 3.5s steps(30, end);
+}
 
-.reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
-.reveal.active { opacity: 1; transform: translateY(0); }
+@keyframes blink { 
+    50% { border-color: transparent; } 
+}
 
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
 /* ==========================================
    8. DARK MODE OVERRIDES (The "Winner")
    ========================================== */
